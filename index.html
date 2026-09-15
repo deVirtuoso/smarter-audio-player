@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smarter Audio Player</title>
+<meta name="description" content="An Android audiobook and long-form audio player. Play from your phone, a NAS, an SFTP or WebDAV server, or Google Drive — all in one library.">
+<link rel="icon" type="image/png" href="logo.png">
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161c26;
+    --border: #2a3140;
+    --text: #e6edf3;
+    --muted: #8b949e;
+    --accent: #4fc3f7;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  main { max-width: 780px; padding: 48px 24px 96px; margin: 0 auto; }
+  header {
+    display: flex; align-items: center; gap: 18px;
+    padding-bottom: 24px; border-bottom: 1px solid var(--border); margin-bottom: 40px;
+  }
+  header img { width: 64px; height: 64px; border-radius: 14px; }
+  header h1 { font-size: 26px; margin: 0; letter-spacing: -0.01em; }
+  header p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+  section { margin-bottom: 44px; }
+  h2 { font-size: 20px; margin: 0 0 12px; letter-spacing: -0.01em; }
+  ul.plain { padding-left: 20px; }
+  ul.plain li { margin-bottom: 6px; }
+  .cards {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px; margin-top: 12px;
+  }
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 18px;
+  }
+  .card h3 { margin: 0 0 6px; font-size: 15px; color: var(--accent); }
+  .card p { margin: 0; color: var(--muted); font-size: 14px; }
+  footer {
+    border-top: 1px solid var(--border); padding-top: 24px;
+    color: var(--muted); font-size: 13px;
+  }
+  footer a { margin-right: 16px; }
+</style>
+</head>
+<body>
+<main>
+
+  <header>
+    <img src="logo.png" alt="Smarter Audio Player logo">
+    <div>
+      <h1>Smarter Audio Player</h1>
+      <p>One audiobook library across your phone, your NAS, and your cloud drive.</p>
+    </div>
+  </header>
+
+  <section>
+    <p>Smarter Audio Player is an Android app for people whose audiobooks and long-form
+      audio live in more than one place — on the phone, on a home NAS, on Google Drive,
+      or on an SFTP server. Add each source once, and the app browses, scans and
+      streams the lot as a single library, with bookmarks, per-book playback speed, a
+      sleep timer, and playback resume across every source.</p>
+  </section>
+
+  <section>
+    <h2>Storage sources</h2>
+    <div class="cards">
+      <div class="card"><h3>This device</h3><p>Pick a folder on internal storage, an SD card, or a USB drive.</p></div>
+      <div class="card"><h3>SMB / CIFS</h3><p>Windows shares, UGREEN, Synology, TrueNAS, most consumer NAS boxes.</p></div>
+      <div class="card"><h3>WebDAV</h3><p>Nextcloud, Synology, UGREEN Cloud, or any PROPFIND-compliant server.</p></div>
+      <div class="card"><h3>SFTP &amp; FTP</h3><p>SFTP with trust-on-first-use host key pinning; FTP with random-access reads.</p></div>
+      <div class="card"><h3>Google Drive</h3><p>Sign in with your Google account; browse your Drive folders from the app.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Features</h2>
+    <ul class="plain">
+      <li>Bookshelf sorted by New / Started / Finished with per-book progress.</li>
+      <li>Bookmarks with optional notes; jump back to any spot in any book.</li>
+      <li>Per-book playback speed, skip-silence, volume boost, rewind-on-resume.</li>
+      <li>Sleep timer that keeps running when the screen is closed.</li>
+      <li>On-device chunk cache so seeks are instant once a region has been played.</li>
+      <li>Lock-screen and notification playback controls; Android Auto compatible.</li>
+      <li>No accounts, no telemetry, no ads.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Support</h2>
+    <p>Need help, found a bug, or have a feature request? Email
+      <a href="mailto:REPLACE_WITH_YOUR_SUPPORT_EMAIL">REPLACE_WITH_YOUR_SUPPORT_EMAIL</a>
+      and we'll get back to you.</p>
+  </section>
+
+  <footer>
+    <a href="privacy.html">Privacy policy</a>
+    <a href="terms.html">Terms of service</a>
+    <span>© <span id="year"></span> Smarter Audio Player</span>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </footer>
+
+</main>
+</body>
+</html>

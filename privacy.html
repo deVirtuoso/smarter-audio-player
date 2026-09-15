@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy policy — Smarter Audio Player</title>
+<link rel="icon" type="image/png" href="logo.png">
+<style>
+  :root { --bg:#0d1117; --surface:#161c26; --border:#2a3140; --text:#e6edf3; --muted:#8b949e; --accent:#4fc3f7; }
+  *{box-sizing:border-box}
+  body { background:var(--bg); color:var(--text); font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif; margin:0; -webkit-font-smoothing:antialiased; }
+  a { color:var(--accent); }
+  main { max-width:780px; padding:48px 24px 96px; margin:0 auto; }
+  header { display:flex; align-items:center; gap:14px; padding-bottom:24px; border-bottom:1px solid var(--border); margin-bottom:32px; }
+  header img { width:48px; height:48px; border-radius:10px; }
+  header h1 { font-size:22px; margin:0; letter-spacing:-0.01em; }
+  header p { margin:2px 0 0; color:var(--muted); font-size:13px; }
+  h2 { font-size:18px; margin-top:32px; margin-bottom:10px; letter-spacing:-0.01em; }
+  ul { padding-left:22px; } li { margin-bottom:6px; }
+  .lastup { color:var(--muted); font-size:14px; margin-top:-6px; }
+  footer { border-top:1px solid var(--border); margin-top:48px; padding-top:22px; color:var(--muted); font-size:13px; }
+  footer a { margin-right:16px; }
+</style>
+</head>
+<body>
+<main>
+
+  <header>
+    <img src="logo.png" alt="Logo">
+    <div>
+      <h1>Privacy policy</h1>
+      <p>Smarter Audio Player</p>
+    </div>
+  </header>
+
+  <p class="lastup"><em>Last updated: <span id="lu"></span></em></p>
+  <script>document.getElementById('lu').textContent = '2026-09-15';</script>
+
+  <h2>Summary</h2>
+  <p>Smarter Audio Player is designed to run without collecting personal data. There are
+    no accounts, no analytics, no advertising, and no third-party trackers. Your
+    audiobook library, playback progress, bookmarks, and any credentials you configure
+    stay on your device, and the app only reaches out to the storage servers and cloud
+    accounts you point it at.</p>
+
+  <h2>What the app stores on your device</h2>
+  <ul>
+    <li><strong>Storage source settings</strong> — for each source you configure (a NAS
+      share, WebDAV server, SFTP or FTP server, Google Drive account, or a folder on
+      this device), the app stores the host address, path, username and password or
+      OAuth refresh token, as applicable. Passwords and refresh tokens are stored using
+      Android's <em>EncryptedSharedPreferences</em>, which encrypts the file at rest
+      with a key held in the Android Keystore.</li>
+    <li><strong>Library index</strong> — the app scans each source for audio files and
+      records the folder names, track names, durations, cover images, and your
+      per-book progress (position, playback speed, bookmarks) in a local database on
+      the device.</li>
+    <li><strong>Audio cache</strong> — chunks of audio the app has read from a remote
+      source are cached on the device so seeking is fast and repeated playback avoids
+      re-downloading. The cache is size-capped and evicted on a least-recently-used
+      basis. You can clear it in Settings.</li>
+    <li><strong>SSH known-hosts</strong> — for SFTP sources, the app records the host
+      key fingerprint on first connect, so subsequent connections can detect a
+      changed key (a defence against man-in-the-middle attacks). This file lives in
+      the app's private storage.</li>
+  </ul>
+  <p>None of the above is transmitted off the device by Smarter Audio Player.</p>
+
+  <h2>What the app does not do</h2>
+  <ul>
+    <li>The app does <strong>not</strong> use analytics, telemetry, crash reporting,
+      or any third-party SDK that collects usage data.</li>
+    <li>The app does <strong>not</strong> display advertising.</li>
+    <li>The app does <strong>not</strong> require you to create an account with us.</li>
+    <li>The app does <strong>not</strong> upload your library, files, credentials, or
+      any other personal data to us or to any third party.</li>
+  </ul>
+
+  <h2>Network access</h2>
+  <p>The app needs internet access so it can reach the storage sources and cloud
+    accounts you configure. Once a source is configured, the app makes the following
+    kinds of network requests:</p>
+  <ul>
+    <li>To your NAS or server, over SMB, WebDAV, SFTP, or FTP, to list folders and
+      stream audio files. These connections go directly from your device to your
+      server; they do not pass through any server of ours.</li>
+    <li>To Google, if you sign in with Google Drive, to complete OAuth sign-in and
+      to list and read files from your Drive account (see the section below).</li>
+    <li>To your device's own loopback address (127.0.0.1), to serve audio to the
+      internal media player. No data leaves the device on these connections.</li>
+  </ul>
+
+  <h2>Google Drive integration</h2>
+  <p>When you add a Google Drive source, the app opens Google's sign-in page in a
+    secure Chrome tab so you can grant it access. The app requests the
+    <code>https://www.googleapis.com/auth/drive.readonly</code> OAuth scope. That
+    scope lets the app <em>list and read</em> files and folders in the Drive account
+    you sign in with — the same access you would give a desktop Drive client. The app
+    does not have write, share, or delete permission.</p>
+  <p>What the app does with Drive data:</p>
+  <ul>
+    <li>Lists the folders you nominate (or your whole Drive if you choose that) to
+      find audio files.</li>
+    <li>Streams audio bytes from those files, over HTTPS from
+      googleapis.com directly to your device, to play them.</li>
+    <li>Stores the refresh token Google issues, encrypted, on your device, so you
+      don't have to sign in every time.</li>
+    <li>Extracts durations and embedded cover art from audio files during the scan.</li>
+  </ul>
+  <p>The app does <strong>not</strong> upload the contents of your Drive to us or to
+    anyone else; it does <strong>not</strong> use your Drive data for advertising or
+    analytics; and it does <strong>not</strong> transfer your Drive data to any third
+    party. You can revoke the app's Drive access at any time from your Google Account
+    permissions page (<a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">myaccount.google.com/permissions</a>)
+    or by deleting the Drive source in the app.</p>
+  <p>Smarter Audio Player's use of information received from Google APIs adheres to the
+    <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google
+    API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+  <h2>Permissions</h2>
+  <ul>
+    <li><strong>Internet</strong> and <strong>network state</strong> — to reach your
+      storage sources and, if configured, Google Drive.</li>
+    <li><strong>Post notifications</strong> (Android 13+) — so playback controls
+      appear in the notification area and on the lock screen while a book is playing.</li>
+    <li><strong>Foreground service</strong> (<em>media playback</em>) — so playback
+      continues when the app is in the background.</li>
+    <li><strong>Wake lock</strong> — so the CPU keeps decoding audio when the screen
+      is off.</li>
+    <li>The app does <strong>not</strong> request access to your contacts, camera,
+      microphone, location, SMS, or call history. It uses Android's Storage Access
+      Framework to read only the folder you explicitly pick as a "This device"
+      source — it does not request broad storage permission.</li>
+  </ul>
+
+  <h2>Backups</h2>
+  <p>Encrypted credentials, the SSH known-hosts file, and the audio cache are excluded
+    from Android's Auto Backup and Device-to-Device transfer. Your library index
+    (progress, bookmarks) is included in the normal Auto Backup so you don't lose
+    progress when you switch devices, but this is between your device and your own
+    Google Drive backup — the app has no server-side backup service of its own.</p>
+
+  <h2>Children</h2>
+  <p>Smarter Audio Player is not directed at children under 13 and does not knowingly
+    collect data from children.</p>
+
+  <h2>Changes to this policy</h2>
+  <p>We may update this policy from time to time. Substantive changes will be reflected
+    in the "Last updated" date at the top. The version currently in force is always the
+    one hosted at this URL.</p>
+
+  <h2>Contact</h2>
+  <p>For any questions about this policy or the app's handling of your data, email
+    <a href="mailto:REPLACE_WITH_YOUR_SUPPORT_EMAIL">REPLACE_WITH_YOUR_SUPPORT_EMAIL</a>.</p>
+
+  <footer>
+    <a href="index.html">Home</a>
+    <a href="terms.html">Terms of service</a>
+  </footer>
+</main>
+</body>
+</html>
